@@ -221,3 +221,7 @@ TSWLatexianTemp*
 
 # Mac folder thing
 *.DS_Store
+
+# Jupyter stuff
+.ipynb_checkpoints
+
