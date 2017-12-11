@@ -115,12 +115,56 @@
 	
 	\begin{itemize}
 		\item Brillouin-Wigner PT: $\zeta = E$,
-		\item Rayleigh-Schrödinger PT: $\zeta = E_0^{(0)} \to \-E + \zeta = - \Delta E$.  	
+		\item Rayleigh-Schrödinger PT: $\zeta = E_0^{(0)} \to -E + \zeta = - \Delta E$.  	
 	\end{itemize}
 
 \end{frame}
 
 \section{Rayleigh-Schrödinger PT}
+
+\begin{frame}
+	\frametitle{Korreksjon ved RSPT}
+	$n$-te ordens korreksjon i bølgefunksjon og energi er
+	\begin{gather}
+		E^{(n)} = \bra{\Phi}\hat V \ket{\Psi^{(n-1)}}\\
+		\ket{\Psi^{(n)}} = \hat R \left[\hat V \ket{\Psi^{(n-1)}} - \sum_{j=1}^{n-1}E^{(n-j)}\ket{\Psi^{(j)}} \right]
+	\end{gather}
+
+\end{frame}
+	
+
+\begin{frame}
+	
+	\frametitle{Lavere ordens RSPT}
+	Lavere ordens korreksjonsledd for energi,
+	\begin{align}
+		E^{(1)} =& \bra{\Phi} \hat V \ket{\Phi} \\
+		E^{(2)} =& \bra{\Phi} \hat V \hat R \hat V \ket{\Phi} \\
+		E^{(3)} =& \bra{\phi} \hat V \hat R \hat V \hat R \hat V \ket{\Phi} - E^{(2)}\ket{\Phi} \hat V \hat R^2 \hat V \ket{\Phi}
+	\end{align}
+	og bølgefunksjon
+	\begin{align}
+		\ket{\Psi^{(1)}} =& \hat R \hat V \ket{\Phi} \\
+		\ket{\Psi^{(2)}} =& \hat R (\hat V - E^{(1)}) \hat R \hat V\ket{\Phi} \\
+		\ket{\Psi^{(3)}} =& \hat R (\hat V - E^{(1)}) \hat R (\hat V - E^{(1)}) \hat R \hat V \ket{\Phi} - E^{(2)}\hat R^2 \hat V\ket{\Phi}
+	\end{align}
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Mangepartikkel RSPT}
+
+	Det er vanlig å partisjonere Hamiltonoperatoren i en enkeltlegemeoperator og en perturbert enkeltlegemeoperator pluss en tolegemeoperator
+	\begin{align}
+		&\hat H = \hat K + \hat L, \\
+		&\hat K = \sum_p \kappa_p c^\dagger_p c_p, \\
+		&\hat L = \sum_{pq} \bra{\phi_p} \hat \ell^{(1)}\ket{\phi_q}c^\dagger_p c_q + \frac{1}{4}\bra{\phi_p\phi_q}\hat \ell^{(2)} \ket{\phi_r\phi_s}c^\dagger_p c^\dagger_q c_r c_s.
+	\end{align}		
+		
+\end{frame}
+
 \section{Møller-Plesset PT}
 \section{Konvergensproblemer}
 \section{Hybridmodeller}
