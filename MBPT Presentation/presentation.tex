@@ -1,7 +1,14 @@
 \documentclass{beamer}
 
-\title{Many-Body Perturbation Theory, \\
-		\large{or; the world is not a sphere, but almost.}}
+\usepackage[utf8]{inputenc}
+\usepackage[norsk]{babel}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{physics}
+
+\usetheme{metropolis}
+
+\title[MBPT]{Many-Body Perturbation Theory}
 
 \author{Sebastian G. Winther-Larsen}
 
@@ -12,7 +19,110 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Disposisjon}
+	\tableofcontents
+\end{frame}
+
+\section{Motivasjon}
+\begin{frame}
+	\frametitle{Mangepartikkelproblemet}
+	For nesten alle systemer av interesse i kjemi kan ikke Schrödinger-likningen løses nøyaktig. 
+	En trenger tilnærmede metoder, hvor en standard verktøykasse inneholder
+	\begin{itemize}
+	\item Hartree-Fock (HF),
+	\item Konfigurasjonsinteraksjonsteori (CI),
+	\item Koblet klynge-teori (CC),
+	\item Perturbasjonsteori (PT) $\leftarrow$
+	\end{itemize}
+\end{frame}
+
+\section{Perturbasjonteori (PT)}
+\begin{frame}
+	\frametitle{Formell pertubasjonsteori}
+	
+	Del opp 
+	\begin{equation}
+		\hat H = \hat H_0 + \hat V,
+	\end{equation}
+	slik at Schrödinger-likningen (SL) kan skrives
+	\begin{equation}
+		(\hat H_0 + \hat V)\ket{\Psi} = E\ket{\Psi}, \quad \ket{\Psi} = \ket{\psi_0} + \ket{\chi},
+	\end{equation}
+	hvor
+	\begin{equation}
+		\hat H_0 \ket{\Phi_0} = E^{(0)}_0\ket{\Phi_0}
+	\end{equation}
+	har en kjent løsning.
+\end{frame}
+
+\begin{frame}
+	
+	Anvender $\bra{\Phi_0}$ på Schrödingerlikningen,
+	\begin{gather}
+		\bra{\Phi_0}\hat H_0 \ket{\Psi} + \bra{\Phi_0}\hat V \ket{\Psi} = E\braket{\Phi_0}{\Psi} \\
+		\rightarrow E  - E_0^{(0)} = \Delta E = \bra{\Phi_0}\hat V \ket{\Psi},
+	\end{gather}
+	Hvor jeg har brukt at $\braket{\Phi_0}{\Phi_0} = 1$, $\braket{\Phi_0}{\chi} = 0 \rightarrow \braket{\Phi_0}{\Psi} = 1$.
 	
 \end{frame}
+
+\begin{frame}
+	Introduserer projeksjonsoperatorer
+	\begin{equation}
+		\hat P = \ket{\Phi_0}\bra{\Phi_0}, \quad \hat Q = \mathbbm{1} - \hat P = \sum_{i = 1}^{\infty} \ket{\Phi_i}\bra{\Phi_i}.
+	\end{equation}
+	Viktige egenskaper: $\hat Q^2 = \hat Q$, $\hat P^2 =  \hat P$, $|\hat P, \hat H_0] = [\hat Q, \hat H_0] = 0$, $\hat P \hat Q = \hat Q \hat P = 0$.
+
+	Om bølgefunksjonen skrives om en lineær kombinasjon $\ket{\Psi} = \sum_i a_i \ket{\Phi_i}$ så henter $\hat P$ ut $\ket{\Phi_0}$,
+	\begin{gather}
+		\hat P \ket{\Psi} = a_0\ket{\Phi_0}, \quad \hat Q \ket{\Psi} = \sum_{i\neq 0} a_i \ket{\Phi_i}\\
+		\rightarrow \ket{\Psi} = \hat P \ket{\Psi} + \hat Q \ket{\Psi}.
+	\end{gather}
+
+\end{frame}
+
+\begin{frame}
+
+	Skriver om Schrödingerlikningen
+	\begin{align}
+		(\hat H_0 + \hat V)\ket{\Psi} =& E\ket{\Psi} \\
+		-\hat H_0\ket{\Psi} =& (\hat V - E)\ket{\Psi} \\
+		(\zeta - \hat H_0)\ket{\Psi} =& (\hat V - E + \zeta) \ket{\Psi} \\
+		\hat Q (\zeta - \hat H_0) \hat Q \ket{\Psi} =& \hat Q (\hat V - E + \zeta)\ket{\Psi}.
+	\end{align}
+
+	Trenger den inverse (størrelsen) til $\hat Q (\zeta - \hat H_0) \hat Q$ i Q-rommet, også kjent som den resolvente (størrelsen) til $H_0$
+	\begin{equation}
+	\frac{\hat Q}{\zeta - \hat H_0} \hat Q(\zeta - \hat H_0)\hat Q = \hat Q \rightarrow \hat R \equiv \frac{\hat Q}{\zeta - \hat H_0} 
+	\end{equation}
+
+\end{frame}
+
+
+\begin{frame}
+	Anvender $\hat R$ på den omskrevne Schrödingerlikningen
+
+	\begin{gather}
+		\hat R \hat Q (\zeta  - \hat H_0) \hat Q \ket{\Psi} = \hat R \hat Q(\hat V - e + \zeta)\ket{\Psi} \\
+		\hat Q\ket{\Psi} = \hat R(\hat V - e + \zeta)\ket{\Psi} \\
+		\rightarrow \ket{\Psi} = \ket{\phi_0} + \hat R(\hat V - e + \zeta)\ket{\Psi}, 
+	\end{gather}
+	
+	Om en betrakter dette som en rekursjonsrelasjon så får en
+	\begin{equation}
+		\ket{\Psi} = \sum_{m=0}^\infty [\hat R(\hat V - E + \zeta)]^m \ket{\Phi_0}.
+	\end{equation}
+	
+	\begin{itemize}
+		\item Brillouin-Wigner PT: $\zeta = E$,
+		\item Rayleigh-Schrödinger PT: $\zeta = E_0^{(0)} \to \-E + \zeta = - \Delta E$.  	
+	\end{itemize}
+
+\end{frame}
+
+\section{Rayleigh-Schrödinger PT}
+\section{Møller-Plesset PT}
+\section{Konvergensproblemer}
+\section{Hybridmodeller}
 
 \end{document}
