@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{bbm}
 \usepackage{physics}
+\usepackage{simpler-wick}
 
 \usetheme{metropolis}
 
@@ -154,18 +155,105 @@
 
 \begin{frame}
 	
-	\frametitle{Mangepartikkel RSPT}
+	\frametitle{Mangepartikkel-RSPT}
 
-	Det er vanlig å partisjonere Hamiltonoperatoren i en enkeltlegemeoperator og en perturbert enkeltlegemeoperator pluss en tolegemeoperator
+	Det er vanlig å partisjonere Hamiltonoperatoren i en enkeltlegemeoperator og en den perturberte delen som er en enkeltlegemeoperator pluss en tolegemeoperator
 	\begin{align}
 		&\hat H = \hat K + \hat L, \\
 		&\hat K = \sum_p \kappa_p c^\dagger_p c_p, \\
 		&\hat L = \sum_{pq} \bra{\phi_p} \hat \ell^{(1)}\ket{\phi_q}c^\dagger_p c_q + \frac{1}{4}\bra{\phi_p\phi_q}\hat \ell^{(2)} \ket{\phi_r\phi_s}c^\dagger_p c^\dagger_q c_r c_s.
-	\end{align}		
-		
+	\end{align}	
+	
+\end{frame}
+
+\begin{frame}
+	Gunntilstandsbølgefunksjonen vi studerer er gitt ved $\ket{\Psi}$ og den uperturberte gunntillstandsfunksjonen er en Slaterdeterminant,
+	\begin{equation}
+		\ket{\Phi} = c_1^\dagger \dots c^\dagger_N \ket{-}.
+	\end{equation}
+	En eksitert tilstand kan beskrives med kvasipartikkeloperatorer
+	\begin{equation}
+		\ket{\Phi_X} = b^\dagger_{a_1}b^\dagger_{i_1} \dots b^\dagger_{a_{\#X}}b^\dagger_{i_{\#X}} \ket{\Phi}.
+	\end{equation}
+	Da må projeksjonsoperatorene bli
+	\begin{equation}
+		\hat P = \ket{\Phi}\bra{\Phi}, \quad \hat Q = \mathbbm{1} - \hat P = \sum_{X}\ket{\Phi_X}\bra{\Phi_X}
+	\end{equation}
+	Dette gir oss upertuberte energier
+	\begin{equation}
+		\epsilon = \bra{\Phi}\hat K\ket{\Phi} = \sum_{i=1}^N \kappa_i, \quad \epsilon_X = \bra{\Phi_X} \hat K \ket{\Phi_X} = \sum_{i=1}^N\kappa_i + \sum_{j=1}^{\#X}(\kappa_{a_j} - \kappa_{i_j}).
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	Den resolvente størrelsen blir
+	\begin{equation}
+		\hat R = \frac{\ket{\Phi_X}\ket{\Phi_X}}{\Delta\epsilon_X}, \quad \Delta\epsilon_X \equiv \epsilon - \epsilon_x = \sum_{j=1}^{\#X}(\kappa_{a_j} - \kappa_{i_j}).
+	\end{equation}
+	 Første- og andreordens energikorreksjon blir dermed (etter litt arbeid)
+	 \begin{align}
+	 E^{(1)} =& \bra{\Phi}\hat L \ket{\Phi} = \sum_i \bra{\phi_i} \hat \ell^{(1)}\ket{\phi_i} + \frac{1}{2}\sum_{ij}\bra{\phi_i\phi-j}\hat \ell^{(2)} \ket{\phi_i \phi_j}_{\text{AS}} \\
+	 E^{(2)} =& \sum_{ia}\frac{\abs{\bra{\phi_a}\hat \ell^{(1)} \ket{\phi_i} + \sum_j \bra{\phi_j\phi_a} \hat \ell^{(2)}\ket{\phi_j \phi_i}}^2}{\kappa_i - \kappa_a}  + \frac{\abs{\bra{\phi_a \phi_b} \hat \ell^{(2)} \ket{\phi_i \phi_j}}^2}{\kappa_i + \kappa_j - \kappa_a - \kappa_b}
+	 \end{align}
 \end{frame}
 
 \section{Møller-Plesset PT}
+
+\begin{frame}
+	\frametitle{Møller-Plesset PT}
+	Vi partisjonerer den normalordnede Hamiltonoperatoren i henhold til Hartree-Fock-teori
+	\begin{equation}
+		\hat H_N = \hat H - \hat E_{\text{HF}} = \{\hat F \} + \{ \hat W \} = \sum_{pq}f_q^p \{ c^\dagger_p, c_q\} + \frac{1}{4}\sum_{pqrs}w^{pq}_{rs} \{c^\dagger_p c^\dagger_q c_s c_r \}
+	\end{equation}
+	Med antagelse om at $\hat F$ er diagonal så er 
+	\begin{equation}
+		\hat F\ket{\Phi} = e_0 \ket{\Phi}, \quad \hat F \ket{\Phi_X} = e_X \ket{\Phi_X}
+	\end{equation}
+	Videre er 
+	\begin{equation}
+		\{\hat F\} \ket{\Phi} = 0, \quad \{\hat F\} \ket{\Phi_X} = (e_X - E_0)\ket{\Phi_X} = \sum_j(\epsilon_{a_j} - \epsilon_{i_j})\ket{\Phi_X}
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	Kun den resolvente størrelsen gejnstår for å kunne regne ut energikorreksjonsleddene
+	\begin{equation}
+		\hat R = \sum_{X}\frac{\ket{\Phi_X}\bra{\Phi_X}}{\delta e_X}, \quad \Delta e_X = \sum_{j=1}^{\# X}(\epsilon_{i-j} - \epsilon_{a_j}).
+	\end{equation}
+	Det første energikorreksjonsleddet er
+	\begin{equation}
+		E^{(1)} = \bra{\Phi} \{\hat W \} \ket{\Phi} = 0.
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	Det andre energikorreksjonsleddet er litt vanskeligere å hanskes med, men starter med samme mønster som før
+	\begin{equation}
+		E^{(2)} = \bra{\Phi}\{\hat W\} \hat R \{\hat W\} \ket{\Phi} = \sum_X \frac{1}{\Delta e_X} \abs{\bra{\Phi}\{\hat W\} \ket{\Phi_X}}^2
+	\end{equation}
+	Fordi at $\hat W$ er en tolegemeoperator kan $\ket{\Phi}$ maksimalt være dobbelteksitert. En enkelteksitert tilstand vil gi null bidrag, og vi står igjen med
+	\begin{align}
+		\bra{\Phi} \{\hat W\}\ket{\Phi_{ij}^{aj}} = \frac{1}{4} \sum_{pqrs} w_{rs}^{pq} \bra{\Phi} \{c^\dagger_p c^\dagger_q c_r c_s \} \{b^\dagger_a b^\dagger_b b^\dagger_j b^\dagger_i  \}\ket{\Phi}
+	\end{align}
+	Det finnes kun én type fullstendig sammentrekning av de to operatorstrengene
+	\begin{equation}
+		\wick{
+		\{\c4 c^\dagger_p \c3 c^\dagger_q \c2 c_r \c1 c_s \} \{ \c1 b^\dagger_a \c2 b^\dagger_b \c3 b^\dagger_j  \c4 b^\dagger_i  \}
+		}	
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	Det finnes $2\cdot2=4$ av disse. De resulterende Kronecker-deltaene vil "drepe" summen og bytte ut enten $r$ eller $s$ med enten $a$ eller $b$, og $p$ eller $q$ med $i$ eller $j$. Dette gir
+	\begin{equation}
+		\bra{\Phi} \{\hat W\}\ket{\Phi_{ij}^{aj}} = w_{ab}^{ij}
+	\end{equation}
+	Annenordensenergikorrigeringen blir dermed
+	\begin{equation}
+		E^{(2)} = \sum_{i<j}\sum_{a<b} \frac{\abs{w_{ab}^{ij}}^2}{\epsilon_i + \epsilon_j - \epsilon_a - \epsilon_b}
+	\end{equation}
+\end{frame}
+
 \section{Konvergensproblemer}
 \section{Hybridmodeller}
 
