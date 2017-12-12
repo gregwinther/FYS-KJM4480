@@ -38,7 +38,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{Perturbasjonteori (PT)}
+\section{Generelt om Perturbasjonteori (PT)}
 \begin{frame}
 	\frametitle{Formell pertubasjonsteori}
 	
@@ -48,7 +48,7 @@
 	\end{equation}
 	slik at Schrödinger-likningen (SL) kan skrives
 	\begin{equation}
-		(\hat H_0 + \hat V)\ket{\Psi} = E\ket{\Psi}, \quad \ket{\Psi} = \ket{\psi_0} + \ket{\chi},
+		(\hat H_0 + \hat V)\ket{\Psi} = E\ket{\Psi}, \quad \ket{\Psi} = \ket{\Phi_0} + \ket{\chi},
 	\end{equation}
 	hvor
 	\begin{equation}
@@ -69,7 +69,7 @@
 \end{frame}
 
 \begin{frame}
-	Introduserer projeksjonsoperatorer
+	Introduserer \emph{projeksjonsoperatorer}
 	\begin{equation}
 		\hat P = \ket{\Phi_0}\bra{\Phi_0}, \quad \hat Q = \mathbbm{1} - \hat P = \sum_{i = 1}^{\infty} \ket{\Phi_i}\bra{\Phi_i}.
 	\end{equation}
@@ -85,31 +85,15 @@
 
 \begin{frame}
 
-	Skriver om Schrödingerlikningen
-	\begin{align}
-		(\hat H_0 + \hat V)\ket{\Psi} =& E\ket{\Psi} \\
-		-\hat H_0\ket{\Psi} =& (\hat V - E)\ket{\Psi} \\
-		(\zeta - \hat H_0)\ket{\Psi} =& (\hat V - E + \zeta) \ket{\Psi} \\
-		\hat Q (\zeta - \hat H_0) \hat Q \ket{\Psi} =& \hat Q (\hat V - E + \zeta)\ket{\Psi}.
-	\end{align}
-
-	Trenger den inverse (størrelsen) til $\hat Q (\zeta - \hat H_0) \hat Q$ i Q-rommet, også kjent som den resolvente (størrelsen) til $H_0$
+	Innfører i tillegg den \emph{resolvente} (størrelsen) til $\hat H_0$
 	\begin{equation}
-	\frac{\hat Q}{\zeta - \hat H_0} \hat Q(\zeta - \hat H_0)\hat Q = \hat Q \rightarrow \hat R \equiv \frac{\hat Q}{\zeta - \hat H_0} 
+		 \hat R \equiv \frac{\hat Q}{\zeta - \hat H_0} 
 	\end{equation}
-
-\end{frame}
-
-
-\begin{frame}
-	Anvender $\hat R$ på den omskrevne Schrödingerlikningen
-
-	\begin{gather}
-		\hat R \hat Q (\zeta  - \hat H_0) \hat Q \ket{\Psi} = \hat R \hat Q(\hat V - e + \zeta)\ket{\Psi} \\
-		\hat Q\ket{\Psi} = \hat R(\hat V - e + \zeta)\ket{\Psi} \\
-		\rightarrow \ket{\Psi} = \ket{\phi_0} + \hat R(\hat V - e + \zeta)\ket{\Psi}, 
-	\end{gather}
 	
+	Da kan Schrödinger-likningen skrives om til
+	\begin{equation}
+		\rightarrow \ket{\Psi} = \ket{\phi_0} + \hat R(\hat V - e + \zeta)\ket{\Psi}.
+	\end{equation}
 	Om en betrakter dette som en rekursjonsrelasjon så får en
 	\begin{equation}
 		\ket{\Psi} = \sum_{m=0}^\infty [\hat R(\hat V - E + \zeta)]^m \ket{\Phi_0}.
@@ -118,9 +102,10 @@
 	\begin{itemize}
 		\item Brillouin-Wigner PT: $\zeta = E$,
 		\item Rayleigh-Schrödinger PT: $\zeta = E_0^{(0)} \to -E + \zeta = - \Delta E$.  	
-	\end{itemize}
-
+	\end{itemize}	
+	
 \end{frame}
+
 
 \section{Rayleigh-Schrödinger PT}
 
@@ -142,7 +127,9 @@
 	\begin{align}
 		E^{(1)} =& \bra{\Phi} \hat V \ket{\Phi} \\
 		E^{(2)} =& \bra{\Phi} \hat V \hat R \hat V \ket{\Phi} \\
-		E^{(3)} =& \bra{\phi} \hat V \hat R \hat V \hat R \hat V \ket{\Phi} - E^{(2)}\ket{\Phi} \hat V \hat R^2 \hat V \ket{\Phi}
+		E^{(3)} =& \bra{\Phi} \hat V \hat R \hat V \hat R \hat V \ket{\Phi} - E^{(1)}\bra{\Phi} \hat V \hat R^2 \hat V \ket{\Phi} \\
+		E^{(4)} = & \bra{\Phi} \hat V\hat R (\hat V - E^{(1)}) \hat R (\hat V - E^{(1)}) \hat R \hat V \ket{\Phi}  \\
+					&- E^{(3)}\bra{\Phi}\hat V \hat R^2 \hat V \ket{\Phi}
 	\end{align}
 	og bølgefunksjon
 	\begin{align}
@@ -162,7 +149,7 @@
 	\begin{align}
 		&\hat H = \hat K + \hat L, \\
 		&\hat K = \sum_p \kappa_p c^\dagger_p c_p, \\
-		&\hat L = \sum_{pq} \bra{\phi_p} \hat \ell^{(1)}\ket{\phi_q}c^\dagger_p c_q + \frac{1}{4}\bra{\phi_p\phi_q}\hat \ell^{(2)} \ket{\phi_r\phi_s}c^\dagger_p c^\dagger_q c_r c_s.
+		&\hat L = \sum_{pq} \bra{\phi_p} \hat \ell^{(1)}\ket{\phi_q}c^\dagger_p c_q + \frac{1}{4}\sum_{pqrs}\bra{\phi_p\phi_q}\hat \ell^{(2)} \ket{\phi_r\phi_s}c^\dagger_p c^\dagger_q c_r c_s.
 	\end{align}	
 	
 \end{frame}
@@ -189,13 +176,26 @@
 \begin{frame}
 	Den resolvente størrelsen blir
 	\begin{equation}
-		\hat R = \frac{\ket{\Phi_X}\ket{\Phi_X}}{\Delta\epsilon_X}, \quad \Delta\epsilon_X \equiv \epsilon - \epsilon_x = \sum_{j=1}^{\#X}(\kappa_{a_j} - \kappa_{i_j}).
+		\hat R = \frac{\ket{\Phi_X}\bra{\Phi_X}}{\Delta\epsilon_X}, \quad \Delta\epsilon_X \equiv \epsilon - \epsilon_x = \sum_{j=1}^{\#X}(\kappa_{a_j} - \kappa_{i_j}).
 	\end{equation}
-	 Første- og andreordens energikorreksjon blir dermed (etter litt arbeid)
-	 \begin{align}
-	 E^{(1)} =& \bra{\Phi}\hat L \ket{\Phi} = \sum_i \bra{\phi_i} \hat \ell^{(1)}\ket{\phi_i} + \frac{1}{2}\sum_{ij}\bra{\phi_i\phi-j}\hat \ell^{(2)} \ket{\phi_i \phi_j}_{\text{AS}} \\
-	 E^{(2)} =& \sum_{ia}\frac{\abs{\bra{\phi_a}\hat \ell^{(1)} \ket{\phi_i} + \sum_j \bra{\phi_j\phi_a} \hat \ell^{(2)}\ket{\phi_j \phi_i}}^2}{\kappa_i - \kappa_a}  + \frac{\abs{\bra{\phi_a \phi_b} \hat \ell^{(2)} \ket{\phi_i \phi_j}}^2}{\kappa_i + \kappa_j - \kappa_a - \kappa_b}
-	 \end{align}
+	 Førsteordens energikorreksjon blir
+	 \begin{equation}
+	 E^{(1)} = \bra{\Phi}\hat L \ket{\Phi} = \sum_i \bra{\phi_i} \hat \ell^{(1)}\ket{\phi_i} + \frac{1}{2}\sum_{ij}\bra{\phi_i\phi_j}\hat \ell^{(2)} \ket{\phi_i \phi_j}_{\text{AS}}
+	 \end{equation}
+\end{frame}
+
+\begin{frame}
+	Annenordens energikorreksjon blir
+	\begin{align}
+		E^{(2)} =& \bra{\Phi} \hat L \hat R \hat L \ket{\Phi} = \sum_X \frac{1}{\Delta \epsilon_X}\abs{\bra{\Phi_X} \hat L \ket{\Phi}} \\ 
+	 	=&\sum_{ia}\frac{\abs{\bra{\phi_a}\hat \ell^{(1)} \ket{\phi_i} + \sum_j \bra{\phi_j\phi_a} \hat \ell^{(2)}\ket{\phi_j \phi_i}}^2}{\kappa_i - \kappa_a}  \\
+	 	&+ \frac{1}{4} \sum_{ijab}\frac{\abs{\bra{\phi_a \phi_b} \hat \ell^{(2)} \ket{\phi_i \phi_j}}^2}{\kappa_i + \kappa_j - \kappa_a - \kappa_b}
+	\end{align}
+	
+	Begynnelsen på tredje ordens ledd
+	\begin{equation}
+		E^{(3)} = \bra{\Phi}\hat L \hat R \hat L \hat R \hat L \ket{\Phi} - E^{(1)}\bra{\phi}\hat L \hat R^2 \hat L \ket{\Phi}
+	\end{equation}
 \end{frame}
 
 \section{Møller-Plesset PT}
@@ -212,12 +212,12 @@
 	\end{equation}
 	Videre er 
 	\begin{equation}
-		\{\hat F\} \ket{\Phi} = 0, \quad \{\hat F\} \ket{\Phi_X} = (e_X - E_0)\ket{\Phi_X} = \sum_j(\epsilon_{a_j} - \epsilon_{i_j})\ket{\Phi_X}
+		\{\hat F\} \ket{\Phi} = 0, \quad \{\hat F\} \ket{\Phi_X} = (e_X - e_0)\ket{\Phi_X} = \sum_j(\epsilon_{a_j} - \epsilon_{i_j})\ket{\Phi_X}
 	\end{equation}
 \end{frame}
 
 \begin{frame}
-	Kun den resolvente størrelsen gejnstår for å kunne regne ut energikorreksjonsleddene
+	Kun den resolvente (størrelsen) gjenstår for å kunne regne ut energikorreksjonsleddene
 	\begin{equation}
 		\hat R = \sum_{X}\frac{\ket{\Phi_X}\bra{\Phi_X}}{\delta e_X}, \quad \Delta e_X = \sum_{j=1}^{\# X}(\epsilon_{i-j} - \epsilon_{a_j}).
 	\end{equation}
@@ -312,14 +312,14 @@
 \begin{frame}
 	\frametitle{Hybridmetoder - CCSD(T)}
 	
-		Vi ser fra den påbegynte beregningen av MP3 at den beregningsorienterte kostnaden ved MPPT fort blir høy, bare for MP2 er antall operasjoner $\mathcal{O}(N^2N_\text{vir}^2)$ og for MP3 $\mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^3N_\text{vir}^3))$.
+		Beregningskostnaden ved MPPT blir fort høy, bare for MP2 er antall operasjoner $\mathcal{O}(N^2N_\text{vir}^2)$ og for MP3 $\mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^3N_\text{vir}^3)$.
 	
 	En løsning er å benytte en hybrid av Coupled Cluster og perutrbasjonsteori. Coupled Cluster ansatz
 	\begin{equation}
 		\ket{\Phi_\text{CC}} = e^{\hat T}\ket{\Phi_\text{HF}}, \quad \hat T = \hat T_1 + \hat T_2 + \dots
 	\end{equation}
 	Kostnad: 
-	CCSD: $\mathcal{O}(N^6)$, CCSDT: $\mathcal{O}(N^8)$, CCSD(T): $\mathcal{O}((N + N_\text{vir})^6)$.
+	\\CCSD:  $\mathcal{O}(N^6)$, \\ CCSDT: $\mathcal{O}(N^8)$, \\ CCSD(T): $\mathcal{O}((N + N_\text{vir})^6)$.
 	
 	
 \end{frame}
