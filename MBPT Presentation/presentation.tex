@@ -6,6 +6,7 @@
 \usepackage{bbm}
 \usepackage{physics}
 \usepackage{simpler-wick}
+\usepackage{graphicx}
 
 \usetheme{metropolis}
 
@@ -254,7 +255,73 @@
 	\end{equation}
 \end{frame}
 
-\section{Konvergensproblemer}
-\section{Hybridmodeller}
+\begin{frame}
+	Ganske likt som tidligere starter tredjeordenskorrigeringen med
+	\begin{align}
+		E^{(3)} =& \bra{\Phi} \{\hat W\} \hat R \{\hat W\} \hat R \{\hat W\} \ket{\Phi} - E^{(1)} \bra{\Phi}\{\hat W\} \hat R^2 \{\hat W\} \ket{\Phi} \\
+				=& \sum_{XY} \frac{1}{\Delta e_X \Delta e_Y} \bra{\Phi} \{\hat W\} \ket{\Phi_X} \bra{\Phi_X} \{\hat W\} \ket{\Phi_Y} \bra{\Phi_X} \{\hat W\} \ket{\Phi}
+	\end{align}
+\end{frame}
+
+\begin{frame}
+	\begin{align*}
+		\bra{\Phi_{ij}^{ab}}& \{\hat W \} \ket{\Phi_{kl}^{cd}} = \\
+			 &\frac{1}{4}\sum_{pqrs} w_{rs}^{pq} \bra{\Phi}
+			 \wick{			 
+			 \{\c6 b_i \c5 b_j \c2 b_b \c1 b_a \} \{ \c1 c^\dagger_p \c2 c^\dagger_q \c4 c_s \c3 c_r \} \{\c3 b^\dagger_c \c4 b^\dagger_d \c5 b^\dagger_l \c6 b^\dagger_k \} 
+			}	 		 
+			\ket{\Phi} + \dots \\
+		+&\frac{1}{4}\sum_{pqrs} w_{rs}^{pq} \bra{\Phi}
+		\wick{			 
+			 \{\c2 b_i \c1 b_j  \c6 b_b  \c5 b_a \} \{\c4 c^\dagger_p \c3 c^\dagger_q \c1 c_s \c2 c_r \} \{  \c5 b^\dagger_c \c6  b^\dagger_d \c3 b^\dagger_l \c4 b^\dagger_k \} 
+			}
+			\ket{\Phi} + \dots \\
+		+&\frac{1}{4}\sum_{pqrs} w_{rs}^{pq} \bra{\Phi}
+		\wick{			 
+			 \{\c6 b_i \c4 b_j   \c5 b_b  \c1 b_a \} \{ \c1 c^\dagger_p  \c3 c^\dagger_q \c4 c_s \c2 c_r \} \{ \c2 b^\dagger_c  \c5 b^\dagger_d \c3 b^\dagger_l \c6 b^\dagger_k \} 
+			}
+			\ket{\Phi}
+	\end{align*}
+\end{frame}
+
+\section{Bemerkninger}
+
+\begin{frame}
+	\frametitle{Konvergensproblemer}
+	
+	\begin{table}
+		\begin{tabular}{l r r} \hline
+			& $R = R_{\text{ref}}$ & $R = 2R_{\text{ref}}$ \\ \hline
+			RHF & $0.217822$  & $0.363954$ \\
+			MP2 & $0.013131$  & $0.054730$ \\
+			MP3 & $0.006439$& $0.069096$ \\
+			MP4 & $0.001069$& $0.016046$ \\
+			MP5 & $0.000511$ & $0.016686$ \\
+			MP6 & $0.000130$ & $0.004300$ \\
+			MP7 & $0.000067$ & $0.000626$ \\
+			MP8 & $0.000014$ & $-0.000475$ \\
+			MP9 & $0.000011$ & $-0.002065$ \\
+			MP10&$-0.000001$&$-0.001652$ \\ \hline
+		\end{tabular}
+		\caption{Energiforskjeller fra FCI for vannmolekyl. cc-pVDZ. OH separasjon, $R_\text{ref}=1.843
+		45a_0$, vinkel $110.565^\circ$.}
+	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hybridmetoder - CCSD(T)}
+	
+		Vi ser fra den påbegynte beregningen av MP3 at den beregningsorienterte kostnaden ved MPPT fort blir høy, bare for MP2 er antall operasjoner $\mathcal{O}(N^2N_\text{vir}^2)$ og for MP3 $\mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^3N_\text{vir}^3))$.
+	
+	En løsning er å benytte en hybrid av Coupled Cluster og perutrbasjonsteori. Coupled Cluster ansatz
+	\begin{equation}
+		\ket{\Phi_\text{CC}} = e^{\hat T}\ket{\Phi_\text{HF}}, \quad \hat T = \hat T_1 + \hat T_2 + \dots
+	\end{equation}
+	Kostnad: 
+	CCSD: $\mathcal{O}(N^6)$, CCSDT: $\mathcal{O}(N^8)$, CCSD(T): $\mathcal{O}((N + N_\text{vir})^6)$.
+	
+	
+\end{frame}
 
 \end{document}
