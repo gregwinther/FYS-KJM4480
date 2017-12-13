@@ -73,7 +73,7 @@
 	\begin{equation}
 		\hat P = \ket{\Phi_0}\bra{\Phi_0}, \quad \hat Q = \mathbbm{1} - \hat P = \sum_{i = 1}^{\infty} \ket{\Phi_i}\bra{\Phi_i}.
 	\end{equation}
-	Viktige egenskaper: $\hat Q^2 = \hat Q$, $\hat P^2 =  \hat P$, $|\hat P, \hat H_0] = [\hat Q, \hat H_0] = 0$, $\hat P \hat Q = \hat Q \hat P = 0$.
+	Viktige egenskaper: $\hat Q^2 = \hat Q$, $\hat P^2 =  \hat P$, $[\hat P, \hat H_0] = [\hat Q, \hat H_0] = 0$, $\hat P \hat Q = \hat Q \hat P = 0$.
 
 	Om bølgefunksjonen skrives om en lineær kombinasjon $\ket{\Psi} = \sum_i a_i \ket{\Phi_i}$ så henter $\hat P$ ut $\ket{\Phi_0}$,
 	\begin{gather}
@@ -129,7 +129,7 @@
 		E^{(2)} =& \bra{\Phi} \hat V \hat R \hat V \ket{\Phi} \\
 		E^{(3)} =& \bra{\Phi} \hat V \hat R \hat V \hat R \hat V \ket{\Phi} - E^{(1)}\bra{\Phi} \hat V \hat R^2 \hat V \ket{\Phi} \\
 		E^{(4)} = & \bra{\Phi} \hat V\hat R (\hat V - E^{(1)}) \hat R (\hat V - E^{(1)}) \hat R \hat V \ket{\Phi}  \\
-					&- E^{(3)}\bra{\Phi}\hat V \hat R^2 \hat V \ket{\Phi}
+					&- E^{(2)}\bra{\Phi}\hat V \hat R^2 \hat V \ket{\Phi}
 	\end{align}
 	og bølgefunksjon
 	\begin{align}
@@ -219,7 +219,7 @@
 \begin{frame}
 	Kun den resolvente (størrelsen) gjenstår for å kunne regne ut energikorreksjonsleddene
 	\begin{equation}
-		\hat R = \sum_{X}\frac{\ket{\Phi_X}\bra{\Phi_X}}{\delta e_X}, \quad \Delta e_X = \sum_{j=1}^{\# X}(\epsilon_{i-j} - \epsilon_{a_j}).
+		\hat R = \sum_{X}\frac{\ket{\Phi_X}\bra{\Phi_X}}{\Delta e_X}, \quad \Delta e_X = \sum_{j=1}^{\# X}(\epsilon_{i-j} - \epsilon_{a_j}).
 	\end{equation}
 	Det første energikorreksjonsleddet er
 	\begin{equation}
@@ -245,7 +245,7 @@
 \end{frame}
 
 \begin{frame}
-	Det finnes $2\cdot2=4$ av disse. De resulterende Kronecker-deltaene vil "drepe" summen og bytte ut enten $r$ eller $s$ med enten $a$ eller $b$, og $p$ eller $q$ med $i$ eller $j$. Dette gir
+	Det finnes $2\cdot2=4$ av disse. De resulterende Kronecker-deltaene vil drepe summe og bytte ut enten $r$ eller $s$ med enten $a$ eller $b$, og $p$ eller $q$ med $i$ eller $j$. Dette gir
 	\begin{equation}
 		\bra{\Phi} \{\hat W\}\ket{\Phi_{ij}^{aj}} = w_{ab}^{ij}
 	\end{equation}
@@ -312,9 +312,9 @@
 \begin{frame}
 	\frametitle{Hybridmetoder - CCSD(T)}
 	
-		Beregningskostnaden ved MPPT blir fort høy, bare for MP2 er antall operasjoner $\mathcal{O}(N^2N_\text{vir}^2)$ og for MP3 $\mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^2N_\text{vir}^2)) + \mathcal{O}(N^3N_\text{vir}^3)$.
+		Beregningskostnaden ved MPPT blir fort høy, bare for MP2 er antall operasjoner $\mathcal{O}(N^2N_\text{vir}^2)$ og for MP3 $\mathcal{O}(N^2N_\text{vir}^4)) + \mathcal{O}(N^4N_\text{vir}^2)) + \mathcal{O}(N^3N_\text{vir}^3)$.
 	
-	En løsning er å benytte en hybrid av Coupled Cluster og perutrbasjonsteori. Coupled Cluster ansatz
+	En veldig god metode er å benytte en hybrid av Coupled Cluster og perutrbasjonsteori. Coupled Cluster ansatz
 	\begin{equation}
 		\ket{\Phi_\text{CC}} = e^{\hat T}\ket{\Phi_\text{HF}}, \quad \hat T = \hat T_1 + \hat T_2 + \dots
 	\end{equation}
